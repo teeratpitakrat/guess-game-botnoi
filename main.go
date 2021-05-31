@@ -80,8 +80,15 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 			// Check for duplicate
 			if _, exists := guessMap[guess]; exists {
 				firstGuesser := guessMap[guess]
-				log.Println(fmt.Sprintf("<@%s> ทายเลข %s ซ้ำกับ <@%s>", m.Author.ID, guess, firstGuesser))
-				s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("<@%s> ทายเลข %s ซ้ำกับ <@%s> ค่า", m.Author.ID, guess, firstGuesser))
+				if firstGuesser == m.Author.ID {
+					reply_msg := fmt.Sprintf("<@%s> รู้แล้วค่ะว่าทายเลข %s ทายรอบเดียวก็พอค่ะ", m.Author.ID, guess)
+					log.Println(reply_msg)
+					s.ChannelMessageSend(m.ChannelID, reply_msg)
+				} else {
+					reply_msg := fmt.Sprintf("<@%s> ทายเลข %s ซ้ำกับ <@%s> ค่า", m.Author.ID, guess, firstGuesser)
+					log.Println(reply_msg)
+					s.ChannelMessageSend(m.ChannelID, reply_msg)
+				}
 			} else {
 				// Check if m.Author.ID makes a new guess, if yes, delete old guess
 				for guess, author := range guessMap {
