@@ -49,6 +49,8 @@ func main() {
 		return
 	}
 
+	discordSession.ChannelMessageSend(channelId, "เริ่มทายได้เลยค่า ใครทายซ้ำให้พิมพ์ใหม่ อย่า edit ข้อความเก่านะคะ เดี๋ยวบอทงง")
+
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
 	sc := make(chan os.Signal, 1)
