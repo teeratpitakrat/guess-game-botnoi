@@ -49,7 +49,7 @@ func main() {
 		return
 	}
 
-	discordSession.ChannelMessageSend(channelId, "เริ่มทายได้เลยค่า ใครทายซ้ำให้พิมพ์ใหม่ อย่า edit ข้อความเก่านะคะ เดี๋ยวบอทงง")
+	discordSession.ChannelMessageSend(channelId, "เริ่มทายกันได้เลยค่า")
 
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
@@ -87,7 +87,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 					log.Println(reply_msg)
 					s.ChannelMessageSend(m.ChannelID, reply_msg)
 				} else {
-					reply_msg := fmt.Sprintf("<@%s> ทายเลข %s ซ้ำกับ <@%s> ค่า", m.Author.ID, guess, firstGuesser)
+					reply_msg := fmt.Sprintf("<@%s> ทายเลข %s ซ้ำกับ <@%s> ค่า พิมพ์เลขใหม่เข้ามาทายอีกทีนะคะ อย่า edit ข้อความเก่า เดี๋ยวบอทงง", m.Author.ID, guess, firstGuesser)
 					log.Println(reply_msg)
 					s.ChannelMessageSend(m.ChannelID, reply_msg)
 				}
