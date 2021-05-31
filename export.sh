@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export DISCORD_TOKEN=""
-export DISCORD_GUILDID=""
+export DISCORD_CHANNEL_ID=""
